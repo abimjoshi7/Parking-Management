@@ -20,11 +20,11 @@ class NetworkHelper {
           jsonEncode({"password": password, "username": username});
       final response = await http.post(
           Uri.parse(
-              preferences?.getString(loginURL).toString() ?? baseUrl + "login"),
+              preferences?.getString(loginURL).toString() ?? "${baseUrl}login"),
           body: jsonRequest);
       return jsonDecode(response.body);
     } catch (e) {
-      throw ("POST EXCEPTION:" + e.toString());
+      throw ("POST EXCEPTION:$e");
     }
   }
 
@@ -34,10 +34,10 @@ class NetworkHelper {
       final jsonRequest = jsonEncode(
           {"password": password, "username": "info@podamibenepal.com"});
       final response =
-          await http.post(Uri.parse(baseUrl + "login"), body: jsonRequest);
+          await http.post(Uri.parse("${baseUrl}login"), body: jsonRequest);
       return jsonDecode(response.body);
     } catch (e) {
-      throw ("POST EXCEPTION:" + e.toString());
+      throw ("POST EXCEPTION:$e");
     }
   }
 
@@ -45,7 +45,7 @@ class NetworkHelper {
     preferences = await SharedPreferences.getInstance();
 
     final response = await http.get(
-      Uri.parse(configUrl + "P105"),
+      Uri.parse("${configUrl}P105"),
     );
     return await jsonDecode(response.body);
   }
@@ -93,7 +93,7 @@ class NetworkHelper {
 
   Future<void> postCheckIn(String body) async {
     preferences = await SharedPreferences.getInstance();
-    final request = await http.post(Uri.parse(baseUrl + "checkin"), body: body);
+    final request = await http.post(Uri.parse("${baseUrl}checkin"), body: body);
     final result = await jsonDecode(request.body);
     await preferences?.setString(checkIn, result["data"]["check_in"]);
     await preferences?.setString(qrToken, result["data"]["qr_token"]);
@@ -108,7 +108,7 @@ class NetworkHelper {
     preferences = await SharedPreferences.getInstance();
 
     final request =
-        await http.post(Uri.parse(baseUrl + "checkout"), body: body);
+        await http.post(Uri.parse("${baseUrl}checkout"), body: body);
     final result = await jsonDecode(request.body);
     // print("Response result: " + result.toString());
     await preferences?.setString(checkIn, result["data"]["check_in"]);
@@ -128,7 +128,7 @@ class NetworkHelper {
     preferences = await SharedPreferences.getInstance();
 
     final request =
-        await http.post(Uri.parse(baseUrl + "checkoutByVehicle"), body: body);
+        await http.post(Uri.parse("${baseUrl}checkoutByVehicle"), body: body);
     final result = await jsonDecode(request.body);
     await preferences?.setString(checkIn, result["data"]["check_in"]);
     await preferences?.setString(

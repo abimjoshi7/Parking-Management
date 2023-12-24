@@ -9,7 +9,7 @@ import '../constants/app_indentifier.dart';
 
 class LoginScreen extends StatefulWidget {
   static const name = 'login-screen';
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();

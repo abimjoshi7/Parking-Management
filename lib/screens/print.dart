@@ -11,7 +11,7 @@ import '../widgets/print_receipt.dart';
 class PrintTask extends StatefulWidget {
   static const name = 'random-test';
 
-  const PrintTask({Key? key}) : super(key: key);
+  const PrintTask({super.key});
   @override
   _PrintTaskState createState() => _PrintTaskState();
 }
@@ -137,7 +137,9 @@ class _PrintTaskState extends State<PrintTask> {
                 DropdownButton(
                   items: _getDeviceItems(),
                   onChanged: (value) {
-                    setState(() => _device = value as BluetoothDevice?);
+                    setState(
+                      () => _device = value,
+                    );
                   },
                   value: _device,
                 ),
@@ -164,7 +166,7 @@ class _PrintTaskState extends State<PrintTask> {
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      primary: _connected ? Colors.red : Colors.green),
+                      backgroundColor: _connected ? Colors.red : Colors.green),
                   onPressed: _connected ? _disconnect : _connect,
                   child: Text(
                     _connected ? 'Disconnect' : 'Connect',
@@ -210,10 +212,14 @@ class _PrintTaskState extends State<PrintTask> {
       ));
     } else {
       for (var device in _devices) {
-        items.add(DropdownMenuItem(
-          child: Text(device.name!),
-          value: device,
-        ));
+        items.add(
+          DropdownMenuItem(
+            value: device,
+            child: Text(
+              device.name!,
+            ),
+          ),
+        );
       }
     }
     return items;

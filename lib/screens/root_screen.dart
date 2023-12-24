@@ -8,7 +8,7 @@ import '../constants/theme.dart';
 
 class RootScreen extends StatefulWidget {
   static const name = 'home-screen';
-  const RootScreen({Key? key}) : super(key: key);
+  const RootScreen({super.key});
 
   @override
   State<RootScreen> createState() => _RootScreenState();
@@ -37,15 +37,18 @@ class _RootScreenState extends State<RootScreen> {
       args = {"user_id": "0", "user_name": "Test User"};
     }
 
-    return WillPopScope(
-      onWillPop: () async => false,
+    return PopScope(
+      onPopInvoked: (didPop) => false,
       child: Scaffold(
         appBar: AppBar(
           title: GestureDetector(
-              onDoubleTap: () {
-                Navigator.pushNamed(context, TestScreen.name);
-              },
-              child: Text('Welcome, ' + args["user_name"])),
+            onDoubleTap: () {
+              Navigator.pushNamed(context, TestScreen.name);
+            },
+            child: Text(
+              'Welcome, ${args["user_name"]}',
+            ),
+          ),
           automaticallyImplyLeading: false,
           actions: [
             Row(

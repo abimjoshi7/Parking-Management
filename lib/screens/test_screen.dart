@@ -3,7 +3,7 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 
 class TestScreen extends StatefulWidget {
   static const name = 'test';
-  const TestScreen({Key? key}) : super(key: key);
+  const TestScreen({super.key});
 
   @override
   State<TestScreen> createState() => _TestScreenState();

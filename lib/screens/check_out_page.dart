@@ -11,7 +11,7 @@ String? _scanBarcode;
 
 class CheckOut extends StatefulWidget {
   static const name = "check-out";
-  const CheckOut({Key? key}) : super(key: key);
+  const CheckOut({super.key});
 
   @override
   State<CheckOut> createState() => _CheckOutState();
@@ -245,6 +245,9 @@ class _CheckOutState extends State<CheckOut> {
                                   items: List.generate(
                                     response.data!["vehical_type"].length,
                                     (index) => DropdownMenuItem(
+                                      value: response.data!["vehical_type"]
+                                              [index]
+                                          .toString(),
                                       child: Row(
                                         children: [
                                           Text(response.data!["vehical_type"]
@@ -254,9 +257,6 @@ class _CheckOutState extends State<CheckOut> {
                                               [index]["rate"]),
                                         ],
                                       ),
-                                      value: response.data!["vehical_type"]
-                                              [index]
-                                          .toString(),
                                     ),
                                   ),
                                   onChanged: (v) {
@@ -305,6 +305,9 @@ class _CheckOutState extends State<CheckOut> {
                                           response.data!["province"].length,
                                           // response.data!["vehical_type"].length,
                                           (index) => DropdownMenuItem(
+                                            value: response.data!["province"]
+                                                    [index]
+                                                .toString(),
                                             child: Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.start,
@@ -318,9 +321,6 @@ class _CheckOutState extends State<CheckOut> {
                                                 //     ["code"]),
                                               ],
                                             ),
-                                            value: response.data!["province"]
-                                                    [index]
-                                                .toString(),
                                           ),
                                         ),
                                         onChanged: (v) {
@@ -369,6 +369,8 @@ class _CheckOutState extends State<CheckOut> {
                                         items: List.generate(
                                           response.data!["zone"].length,
                                           (index) => DropdownMenuItem(
+                                            value: response.data!["zone"][index]
+                                                .toString(),
                                             child: Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.start,
@@ -379,8 +381,6 @@ class _CheckOutState extends State<CheckOut> {
                                                     [index]["label"]),
                                               ],
                                             ),
-                                            value: response.data!["zone"][index]
-                                                .toString(),
                                           ),
                                         ),
                                         onChanged: (v) {
@@ -557,7 +557,7 @@ class _CheckOutState extends State<CheckOut> {
 
             await scanQR()
                 // ignore: avoid_print
-                .then((value) => print("Scanned Code: " + _scanBarcode!));
+                .then((value) => print("Scanned Code: ${_scanBarcode!}"));
             if (_scanBarcode!.isNotEmpty) {
               final request = jsonEncode({
                 "app_id": "P105",
@@ -569,8 +569,8 @@ class _CheckOutState extends State<CheckOut> {
               // .then((value) => printReceipt?.printCheckOut());
             }
           },
-          label: Row(
-            children: const [
+          label: const Row(
+            children: [
               Icon(Icons.adf_scanner),
               SizedBox(
                 width: 5,

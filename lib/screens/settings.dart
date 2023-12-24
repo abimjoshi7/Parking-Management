@@ -11,8 +11,8 @@ class Settings extends StatefulWidget {
   bool isDisplayPowered = false;
   static const name = 'settings';
   Settings({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<Settings> createState() => _SettingsState();

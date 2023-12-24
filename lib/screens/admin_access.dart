@@ -9,7 +9,7 @@ import '../constants/app_indentifier.dart';
 
 class AdminLoginScreen extends StatefulWidget {
   static const name = 'admin-access';
-  const AdminLoginScreen({Key? key}) : super(key: key);
+  const AdminLoginScreen({super.key});
 
   @override
   State<AdminLoginScreen> createState() => _LoginScreenState();

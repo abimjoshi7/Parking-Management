@@ -22,9 +22,9 @@ class CustomTheme {
         ),
       ),
       textTheme: const TextTheme(
-        bodyText2: TextStyle(
+        bodyMedium: TextStyle(
             fontSize: 25, fontWeight: FontWeight.w400, color: Colors.black),
-        button: TextStyle(
+        labelLarge: TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.w400,
           color: Colors.amber,
@@ -39,7 +39,7 @@ class CustomTheme {
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-              primary: kColorPrimary, minimumSize: const Size(100, 30)),
+              backgroundColor: kColorPrimary, minimumSize: const Size(100, 30)),
         ),
         checkboxTheme: CheckboxThemeData(
             fillColor: MaterialStateProperty.all(kColorPrimary)),

@@ -1,11 +1,11 @@
 {
-    "name": "smartparking",
-    "short_name": "smartparking",
+    "name": "parking",
+    "short_name": "parking",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Smart parking application",
+    "description": "A new Flutter project.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

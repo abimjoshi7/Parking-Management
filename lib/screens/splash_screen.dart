@@ -36,7 +36,6 @@ class _SplashScreenState extends State<SplashScreen> {
         isLogged = true;
       });
     }
-    // print(isLogged);
   }
 
   Future<void> connectBluetooth() async {
@@ -55,11 +54,6 @@ class _SplashScreenState extends State<SplashScreen> {
     initializePreferences();
     toggleLogged();
     connectBluetooth();
-    // try{
-    //   if(bluetooth.isAvailable == true && bluetooth.isOn == true){
-    //
-    //   }
-    // }catch(e){}
   }
 
   @override
